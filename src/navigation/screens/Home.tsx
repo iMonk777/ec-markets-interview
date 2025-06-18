@@ -1,24 +1,27 @@
-import { Button, Text } from '@react-navigation/elements';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
+import { SPACE_MEDIUM } from '../../constants/layout';
+import Header from '../../components/Header';
+import Chart from '../../components/Chart';
 
 export function Home() {
+
   return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Text>Open up 'src/App.tsx' to start working on your app!</Text>
-      <Button screen="Profile" params={{ user: 'jane' }}>
-        Go to Profile
-      </Button>
-      <Button screen="Settings">Go to Settings</Button>
-    </View>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
+      <Header />
+      <Chart />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 10,
+    padding: SPACE_MEDIUM,
   },
+  contentContainer: {
+    flexGrow: 1,
+  }
 });
