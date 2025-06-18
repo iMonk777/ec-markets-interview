@@ -31,9 +31,6 @@ const Chart = () => {
     }, [data]);
 
 
-    console.log('dataSets', dataSets);
-
-
     const toggleOption = (index: number) => {
         setReRenderLoader(true)
         setPickerOptions(prevOptions => {
