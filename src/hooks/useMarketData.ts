@@ -1,7 +1,16 @@
 import { useEffect, useState } from 'react'
 
+type MarketData = {
+    timestamp: string,
+    open: number,
+    high: number,
+    low: number,
+    close: number,
+    volume: number,
+}
+
 const useMarketData = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<MarketData[] | null>(null);
     const [loading, setLoading] = useState(true);
 
     const getMarketData = async () => {
@@ -12,7 +21,7 @@ const useMarketData = () => {
                 throw new Error('Network response was not ok');
             }
             const result = await response.json();
-            setData(result);
+            setData(result?.data);
         } catch (error) {
             console.error('Error fetching market data:', error);
         } finally {
